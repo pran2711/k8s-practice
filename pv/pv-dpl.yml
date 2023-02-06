@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mypvdepl
+spec:
+  selector:
+    matchLabels:
+      pv: mypv
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        pv: mypv
+    spec:
+      containers:
+        - name: con
+          image: nginx
+          ports:
+            - containerPort: 80
+          volumeMounts:
+          - name: mymount
+            mountPath: /tmp/pv
+      volumes:
+        - name: mymount
+          persistentVolumeClaim:
+            claimName: mypvc
+            
+    
