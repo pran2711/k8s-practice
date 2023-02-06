@@ -1,0 +1,23 @@
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: rspod
+spec:
+  selector:
+    matchExpressions:
+      - key: env
+        operator: In
+        values:
+          - "dev"
+  replicas: 2
+  template:
+    metadata:
+      name: myrspod
+      labels:
+        env: dev
+    spec:
+      containers:
+        - name: ng
+          image: nginx
+          ports:
+          - containerPort: 80

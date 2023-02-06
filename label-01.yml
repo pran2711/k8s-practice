@@ -1,0 +1,20 @@
+---
+ kind: Pod
+ apiVersion: v1
+ metadata:
+   name: mypod
+   labels:
+     env: dev
+ spec:
+    containers:
+      - name: con-01
+        image: nginx:latest
+        ports:
+          - containerPort: 80
+        resources:
+          limits:
+            memory: 100Mi
+            cpu: "1"
+          requests:
+            memory: 100Mi
+            cpu: "0.2"
