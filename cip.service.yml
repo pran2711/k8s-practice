@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myservice
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    net: cip-comm
+  type: ClusterIP

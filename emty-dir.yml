@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: conpod
+spec:
+  containers:
+    - name: con01
+      image: ubuntu
+      command: ["bin/bash","-c","sleep 10000"]
+      volumeMounts:
+        - name: newvol
+          mountPath: "/tmp/data"
+    - name: con02
+      image: centos
+      command: ["bin/bash","-c","sleep 10000"]
+      volumeMounts:
+        - name: newvol
+          mountPath: "/tmp/data2"
+  volumes:
+    - name: newvol
+      emptyDir: {}
