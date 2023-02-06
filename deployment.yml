@@ -1,0 +1,19 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: depl
+spec:
+  selector:
+    matchLabels:
+      env: prod
+  replicas: 2
+  template:
+    metadata:
+      name: dpod
+      labels:
+        env: prod
+    spec:
+      containers:
+        - name: con01
+          image: centos
+          command: ["bin/bash","-c","while true;do echo yourname;sleep 6;done"]
